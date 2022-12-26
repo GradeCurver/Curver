@@ -22,7 +22,7 @@ export default function Home() {
         <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
         
         <div className={styles.cardContainer}>
-          <FirstCard></FirstCard>
+          <FirstCard></FirstCard> 
           <SecondCard></SecondCard>
           <ThirdCard></ThirdCard>
         </div>
@@ -34,7 +34,10 @@ export default function Home() {
 const FirstCard = (props) => {
   return(
     <div className={styles.card}>
-        <h1>Grade Output</h1>
+      <div className={styles.cardHeader}>
+        <h1>Curve Function</h1>
+        <h3>Square Root</h3>
+      </div>
     </div>
   )
 };

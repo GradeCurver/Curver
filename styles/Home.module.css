@@ -48,7 +48,7 @@
 }
 
 .card span {
-  padding: 1rem;
+  padding: 0rem;
   background-color: var(--card-background-color);
   border: 2px solid var(--card-stroke-color);
   border-radius: 12px;
@@ -60,5 +60,19 @@
   margin: 0;
   font-size: x-large;
   font-weight: 600;
+  margin-right: 4rem;
   
+}
+
+.card h3 {
+  padding: 0;
+  margin: 0;
+  margin-left: 4rem;
+  font-size: medium;
+  font-weight: normal;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
 }
