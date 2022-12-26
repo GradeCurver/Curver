@@ -3,17 +3,42 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 2rem;
   min-height: 100vh;
 }
 
-.description {
-  display: inherit;
+.title {
+  display: flex;
   justify-content: inherit;
-  align-items: inherit;
+  align-items: center;
+  font-size: 2rem;
+  max-width: var(--max-width);
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+
+.title p {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: var(--border-radius);
+}
+
+.title a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description {
+  display: flex;
+  justify-content: inherit;
+  align-items: center;
   font-size: 0.85rem;
   max-width: var(--max-width);
-  width: 100%;
   z-index: 2;
   font-family: var(--font-mono);
 }
@@ -48,10 +73,29 @@
 
 .card {
   padding: 1rem 1.2rem;
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+  font-family: var(--font-mono);
+  justify-content: center;
+  align-items: auto;
+  position: relative;
+}
+
+.card input {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: var(--max-width);
+  border: 0;
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: 5px;
 }
 
 .card span {
