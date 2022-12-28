@@ -34,18 +34,16 @@ export default function Home() {
 const FirstCard = (props) => {
   return(
     <div className={styles.card}>
-      <div className={styles.cardHeader}>
-        <h1>Curve Function</h1>
-        <h3>Square Root</h3>
+        <h2>Curve Function</h2>
+        <h3>Square Root ↓</h3>
       </div>
-    </div>
   )
 };
 
 const SecondCard = (props) => {
   return(
     <div className={styles.card}>
-        <h1>Grade Output</h1>
+        <h1>Raw Grade</h1>
     </div>
   )
 };

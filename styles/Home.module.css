@@ -39,7 +39,8 @@
   display: flex;
   width: var(--max-width);
   justify-content: center;
-  
+  align-items: baseline;
+
   padding: 1rem;
   background-color: var(--card-background-color);
   border: 2px solid var(--card-stroke-color);
@@ -55,24 +56,28 @@
   box-shadow: 0px 4px 8px 2px var(--card-shadow-color);
 }
 
+  
 .card h1 {
   padding: 0;
   margin: 0;
   font-size: x-large;
   font-weight: 600;
-  margin-right: 4rem;
   
+}
+.card h2 {
+  padding: 0;
+  margin: 0;
+  font-size: large;
+  font-weight: 600;
+  margin-left: 0px;
+  margin-right:auto
 }
 
 .card h3 {
   padding: 0;
   margin: 0;
-  margin-left: 4rem;
   font-size: medium;
   font-weight: normal;
-}
+  color: gray;
 
-.cardHeader {
-  display: flex;
-  align-items: baseline;
 }
