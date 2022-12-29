@@ -65,6 +65,16 @@
   width: 70px;
 }
 
+.bigText {
+  font-size: 96px;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82%;
+}
+
 /* ############### */
 /* # Card Header # */
 /* ############### */
