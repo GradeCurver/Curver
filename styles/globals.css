@@ -4,6 +4,7 @@
 
   --background-color: #F8FAFC;
   --text-color: #000000;
+  --text-secondary-color: #445469;
 
   --card-background-color: #FFFFFF;
   --card-stroke-color: #EAECF0;
@@ -12,12 +13,15 @@
 
   background-color: var(--background-color);
 }
-
+/* Remove Outline When Selecting */
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
 
 @media (prefers-color-scheme: dark) {
   :root{
     --background-color: #101828;
     --text-color: #ffffff;
+    --text-secondary-color: #96A2B5;
 
     --card-background-color: #050F21;
     --card-stroke-color: #1D2939;
