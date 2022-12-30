@@ -1,17 +1,12 @@
-import Head from "next/head"; 
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { FirstCard } from "../src/Cards/firstCard"
-import { SecondCard } from "../src/Cards/secondCard"
+import { SecondCard, FormData } from "../src/Cards/secondCard"
 import { ThirdCard } from "../src/Cards/thirdCard"
 import { useState } from "react";
 
-interface AppProps {}
-
-interface AppState {
-  formData: {
-    score: number;
-    maxScore: number;
-  };
+export interface AppState {
+  formData: FormData
 }
 
 export default function Home() {

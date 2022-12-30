@@ -1,15 +1,11 @@
 import styles from "/styles/Home.module.css";
+import { FormData } from "./secondCard";
 
 interface DisplayProps {
-    formData: {
-        score: number;
-        maxScore: number;
-    };
+    formData: FormData;
 }
 
-
 export const ThirdCard: React.FC<DisplayProps> = (props) => {
-
     return (
         <div className={styles.card}>
             <div className={styles.cardHeader}>
@@ -18,20 +14,15 @@ export const ThirdCard: React.FC<DisplayProps> = (props) => {
             <hr />
             <p>Score: {props.formData.score}</p>
             <p>Max Score: {props.formData.maxScore}</p>
-            <div className={styles.bigText}>{curveGrade(props.formData.score, props.formData.maxScore)}%</div>
+            <div className={styles.bigText}>{curveGrade({ score: props.formData.score, maxScore: props.formData.maxScore })}%</div>
         </div>
     )
 };
 
-function curveGrade(score: number, maxScore: number): string {
+// Math operation to return curved score
+function curveGrade({ score, maxScore }: { score: number; maxScore: number; }): string {
     var curved: number
 
-    if (score > maxScore) {
-        score = maxScore
-    }
-
-    // console.log(score)
-
-    curved = ((score / maxScore)*100)
-    return ( curved.toFixed(2) )
+    curved = ((score / maxScore) * 100)
+    return (curved.toFixed(2))
 }
