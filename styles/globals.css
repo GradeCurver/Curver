@@ -1,5 +1,5 @@
+/* Light Mode Colors & Other Tweaks */
 :root {
-
   --max-width: 1100rem;
 
   --background-color: #F8FAFC;
@@ -17,14 +17,15 @@
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
 
+/* Dark Mode Colors */
 @media (prefers-color-scheme: dark) {
   :root{
-    --background-color: #101828;
+    --background-color: #000000;
     --text-color: #ffffff;
-    --text-secondary-color: #96A2B5;
+    --text-secondary-color: #A5A5A6;
 
-    --card-background-color: #050F21;
-    --card-stroke-color: #1D2939;
+    --card-background-color: #1A1A1A;
+    --card-stroke-color: #3C3C3E;
     --card-text-color: #F8FAFC;
     --card-shadow-color: rgba(0, 0, 0, 0);
 
