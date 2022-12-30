@@ -36,10 +36,12 @@ export const SecondCard: React.FC<FormProps> = (props) => {
       setActualScore(updatedFormData.score)
     }
 
-    // Check if the score is greater than the input
-    // If it is, set the score equal to the input to prevent input scores greater than 100%
-    // Also check if the maxScore has now become greater than the actualScore and if so
-    // Reinstate the actualScore
+    /**
+     * Check if the score is greater than the input
+     * If it is, set the score equal to the input to prevent input scores greater than 100%
+     * Also check if the maxScore has now become greater than the actualScore 
+     * and if so reinstate the actualScore
+     */
     if (event.target.name === "score" && updatedFormData.score > updatedFormData.maxScore) {
       updatedFormData.score = updatedFormData.maxScore;
     } else if (event.target.name === "maxScore" && actualScore < updatedFormData.maxScore) {

@@ -12,8 +12,6 @@ export const ThirdCard: React.FC<DisplayProps> = (props) => {
                 <h1>Grade Output</h1>
             </div>
             <hr />
-            <p>Score: {props.formData.score}</p>
-            <p>Max Score: {props.formData.maxScore}</p>
             <div className={styles.bigText}>{curveGrade({ score: props.formData.score, maxScore: props.formData.maxScore })}%</div>
         </div>
     )
@@ -23,6 +21,6 @@ export const ThirdCard: React.FC<DisplayProps> = (props) => {
 function curveGrade({ score, maxScore }: { score: number; maxScore: number; }): string {
     var curved: number
 
-    curved = ((score / maxScore) * 100)
+    curved = (Math.sqrt(score / maxScore) * 100)
     return (curved.toFixed(2))
 }
