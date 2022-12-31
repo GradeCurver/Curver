@@ -7,7 +7,7 @@ interface DisplayProps {
 
 export const ThirdCard: React.FC<DisplayProps> = (props) => {
 
-    const curve = curveGrade({ score: props.formData.score, maxScore: props.formData.maxScore })
+    const curve = curveGrade({ score: parseInt(props.formData.score, 10), maxScore: props.formData.maxScore })
 
     return (
         <div className={styles.card}>

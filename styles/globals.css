@@ -10,8 +10,6 @@
   --card-stroke-color: #EAECF0;
   --card-text-color: #000000;
   --card-shadow-color: rgba(0, 0, 0, 0.05);
-
-  background-color: var(--background-color);
 }
 
 /* Remove Outline When Selecting */

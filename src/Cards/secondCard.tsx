@@ -2,7 +2,7 @@ import styles from "/styles/Home.module.css";
 import React, { useState } from 'react';
 
 export interface FormData {
-  score: number;
+  score: string;
   maxScore: number;
 }
 
@@ -13,10 +13,10 @@ interface FormProps {
 // The Form component is a functional component that takes in props of type FormProps
 export const SecondCard: React.FC<FormProps> = (props) => {
 
-  const defaultScore: number = 0
+  const defaultScore: string = ""
   const defaultMaxScore: number = 100
 
-  const [actualScore, setActualScore] = useState(0)
+  const [actualScore, setActualScore] = useState("")
 
   const [formData, setFormData] = useState<FormData>({
     score: defaultScore,
@@ -24,7 +24,10 @@ export const SecondCard: React.FC<FormProps> = (props) => {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
+    // Remove any non number inputs
+    const value = event.target.value;
+    const digitsOnly = value.replace(/[^\d]/g, "");
+    event.target.value = digitsOnly;
 
     // Create a copy of the current form data
     const updatedFormData = {
@@ -37,7 +40,11 @@ export const SecondCard: React.FC<FormProps> = (props) => {
 
     // Set the Actual Score
     if (event.target.name === "score") {
-      setActualScore(updatedFormData.score)
+      if (String(updatedFormData.score) === "NaN" || updatedFormData.score === "Na") {
+        setActualScore("")
+      } else {
+        setActualScore(updatedFormData.score)
+      } 
     }
 
     /**
@@ -46,12 +53,13 @@ export const SecondCard: React.FC<FormProps> = (props) => {
      * Also check if the maxScore has now become greater than the actualScore 
      * and if so reinstate the actualScore
      */
-    if (event.target.name === "score" && updatedFormData.score > updatedFormData.maxScore) {
-      updatedFormData.score = updatedFormData.maxScore;
-    } else if (event.target.name === "maxScore" && actualScore < updatedFormData.maxScore) {
-      updatedFormData.score = actualScore
-    } else if (event.target.name === "maxScore" && updatedFormData.score > updatedFormData.maxScore) {
-      updatedFormData.score = updatedFormData.maxScore;
+    const numberScore = parseInt(updatedFormData.score, 10)
+    if (event.target.name === "score" && numberScore > updatedFormData.maxScore) {
+      updatedFormData.score = String(updatedFormData.maxScore);
+    } else if (event.target.name === "maxScore" && parseInt(actualScore, 10) < updatedFormData.maxScore) {
+      updatedFormData.score = String(parseInt(actualScore, 10))
+    } else if (event.target.name === "maxScore" && numberScore > updatedFormData.maxScore) {
+      updatedFormData.score = String(updatedFormData.maxScore);
     }
     setFormData(updatedFormData);
     props.onChange(updatedFormData);
@@ -65,16 +73,32 @@ export const SecondCard: React.FC<FormProps> = (props) => {
     }
   };
 
-  return (
-    <div className={styles.card}>
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    // If the key that was pressed was the Enter key, reset the form data to its default values
+    if (event.key === "Enter") {
+      setFormData({
+        score: "",
+        maxScore: formData.maxScore,
+      });
+      // Trigger the onChange event with the updated form data
+      props.onChange({
+        score: "",
+        maxScore: formData.maxScore,
+      });
+      setActualScore("")
+    }
+  };
+
+    return (
+      <div className={styles.card}>
       <div className={styles.cardHeader}>
         <h1>Raw Grade</h1>
       </div>
       <hr />
-      <form>
-      <input name="score" defaultValue={defaultScore} type="number" max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
-      <hr />
-        <input name="maxScore" defaultValue={defaultMaxScore} type="number" max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
+      <form onKeyDown={handleKeyDown}>
+        <input name="score" value={actualScore} max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
+        <hr />
+        <input name="maxScore" defaultValue={defaultMaxScore} max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
       </form>
     </div>
   )

@@ -7,9 +7,7 @@ export const FirstCard = () => {
                 <h2>Curve Function</h2>
                 <select name="curveFunction" id="curveFunction">
                     <option value="squareRoot">Square Root</option>
-                    <option value="none1">To Add</option>
-                    <option value="none2">To Add</option>
-                    <option value="none3">To Add</option>
+                    <option value="none1">Empty</option>
                 </select>
             </div>
             <hr />
