@@ -12,11 +12,15 @@ interface FormProps {
 
 // The Form component is a functional component that takes in props of type FormProps
 export const SecondCard: React.FC<FormProps> = (props) => {
+
+  const defaultScore: number = 0
+  const defaultMaxScore: number = 100
+
   const [actualScore, setActualScore] = useState(0)
 
   const [formData, setFormData] = useState<FormData>({
-    score: 0,
-    maxScore: 0,
+    score: defaultScore,
+    maxScore: defaultMaxScore,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,8 +72,9 @@ export const SecondCard: React.FC<FormProps> = (props) => {
       </div>
       <hr />
       <form>
-        <input name="score" type="number" max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
-        <input name="maxScore" type="number" max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
+      <input name="score" defaultValue={defaultScore} type="number" max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
+      <hr />
+        <input name="maxScore" defaultValue={defaultMaxScore} type="number" max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
       </form>
     </div>
   )

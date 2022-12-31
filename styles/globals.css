@@ -13,9 +13,21 @@
 
   background-color: var(--background-color);
 }
+
 /* Remove Outline When Selecting */
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
+
+/* Remove Stepper From Number Input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: nil;
+}
 
 /* Dark Mode Colors */
 @media (prefers-color-scheme: dark) {

@@ -11,8 +11,8 @@ export interface AppState {
 
 export default function Home() {
   const [formData, setFormData] = useState<AppState['formData']>({
-    score: 0,
-    maxScore: 0,
+    score: 50,
+    maxScore: 100,
   });
 
   const handleChange = (data: AppState['formData']) => {
@@ -30,7 +30,6 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.title}>Curver</div>
         <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
-
         <div className={styles.cardContainer}>
           <FirstCard />
           <SecondCard onChange={handleChange} />

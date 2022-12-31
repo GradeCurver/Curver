@@ -6,13 +6,23 @@ interface DisplayProps {
 }
 
 export const ThirdCard: React.FC<DisplayProps> = (props) => {
+
+    const curve = curveGrade({ score: props.formData.score, maxScore: props.formData.maxScore })
+
     return (
         <div className={styles.card}>
             <div className={styles.cardHeader}>
                 <h1>Grade Output</h1>
             </div>
             <hr />
-            <div className={styles.bigText}>{curveGrade({ score: props.formData.score, maxScore: props.formData.maxScore })}%</div>
+            {curve !== "NaN" ? (
+                <div className={styles.bigText}>
+                    <div>{curve}</div>
+                    <div style={{opacity: 0.5}}>%</div>
+                </div>
+            ) : (
+                <div className={styles.bigText}>N/A</div>
+            )}
         </div>
     )
 };
