@@ -11,7 +11,7 @@ export interface AppState {
 
 export default function Home() {
   const [formData, setFormData] = useState<AppState['formData']>({
-    score: 50,
+    score: "",
     maxScore: 100,
   });
 
@@ -28,12 +28,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.title}>Curver</div>
-        <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
-        <div className={styles.cardContainer}>
-          <FirstCard />
-          <SecondCard onChange={handleChange} />
-          <ThirdCard formData={formData} />
+        <div className={styles.hero}>
+          <div className={styles.title}>Curver</div>
+          <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
+          <div className={styles.cardContainer}>
+            <FirstCard />
+            <SecondCard onChange={handleChange} />
+            <ThirdCard formData={formData} />
+          </div>
         </div>
       </main>
     </>
