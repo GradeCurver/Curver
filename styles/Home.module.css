@@ -1,12 +1,15 @@
 .hero {
-  background-color: var(--background-color);
+  background-color: var(--hero-background-color);
+  min-height: 100vh;
+  max-height: auto;
+  padding-bottom: 2rem;
+  padding-top: 2rem
 }
 
 .title {
   padding: 0;
   margin: 0;
   margin-top: 2%;
-  font-family: Poppins;
   font-weight: bold;
   font-size: 4rem;
   color: var(--text-color);
@@ -17,7 +20,6 @@
 .subtitle {
   padding: 0;
   margin: 0;
-  font-family: Poppins;
   font-weight: bold;
   font-size: 1rem;
   color: var(--text-color);
@@ -27,7 +29,7 @@
 
 .cardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
   gap: 3rem;
   padding-left: 5rem;
   padding-right: 5rem;
@@ -38,7 +40,6 @@
 .card {
   /* margin: rem; */
   /* margin-inline: 3rem; */
-  font-family: Poppins;
   font-weight: regular;
   /* width: var(--max-width); */
   background-color: var(--card-background-color);
@@ -89,14 +90,6 @@
   margin: 1rem 0rem 1rem 0rem;
 }
 
-.gradeChip {
-  padding: 3px;
-  padding-inline: 15px;
-  border-radius: 200px;
-  font-weight: 500;
-  width: 70px;
-}
-
 .bigText {
   font-size: 96px;
   font-weight: 700;
@@ -123,7 +116,7 @@
 .cardHeader select {
   padding: 8px;
   color: var(--text-secondary-color);
-  font-weight: 600;
+  font-weight: 500;
   background-color: var(--card-background-color);
   border: 1px solid (var(--card-background-color));
   border-radius: 5px;

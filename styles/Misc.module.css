@@ -1,0 +1,8 @@
+.gradeChip {
+    padding: 3px;
+    padding-inline: 15px;
+    border-radius: 200px;
+    font-weight: 500;
+    width: 70px;
+    text-align: center;
+  }

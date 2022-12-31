@@ -2,7 +2,8 @@
 :root {
   --max-width: 1100rem;
 
-  --background-color: #F8FAFC;
+  --hero-background-color: #F8FAFC;
+  --background-color: white;
   --text-color: #000000;
   --text-secondary-color: #445469;
 
@@ -10,6 +11,9 @@
   --card-stroke-color: #EAECF0;
   --card-text-color: #000000;
   --card-shadow-color: rgba(0, 0, 0, 0.05);
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
 }
 
 /* Remove Outline When Selecting */
@@ -30,7 +34,8 @@ input[type=number] {
 /* Dark Mode Colors */
 @media (prefers-color-scheme: dark) {
   :root{
-    --background-color: #000000;
+    --hero-background-color: #000000;
+    --background-color: #1A1A1A;
     --text-color: #ffffff;
     --text-secondary-color: #A5A5A6;
 

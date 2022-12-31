@@ -3,11 +3,26 @@ import styles from "../styles/Home.module.css";
 import { FirstCard } from "../src/Cards/firstCard"
 import { SecondCard, FormData } from "../src/Cards/secondCard"
 import { ThirdCard } from "../src/Cards/thirdCard"
+import { DetailRowProp, DetailSection } from "../src/Detail/detailSection"
+import { ChipColors } from "../src/Misc/chips";
 import { useState } from "react";
 
 export interface AppState {
   formData: FormData
 }
+
+const placeholderData: DetailRowProp[] = [
+  {chipColor: ChipColors.DarkGreen, finalGrade: "92.20%", score: "85", maxScore: "100"},
+  {chipColor: ChipColors.Red, finalGrade: "34.64%", score: "12", maxScore: "100"},
+  {chipColor: ChipColors.DarkGreen, finalGrade: "100.00%", score: "100", maxScore: "100"},
+  {chipColor: ChipColors.Yellow, finalGrade: "70.00%", score: "49", maxScore: "100"},
+  {chipColor: ChipColors.LightGreen, finalGrade: "80.00%", score: "64", maxScore: "100"},
+  {chipColor: ChipColors.DarkGreen, finalGrade: "92.20%", score: "85", maxScore: "100"},
+  {chipColor: ChipColors.Red, finalGrade: "34.64%", score: "12", maxScore: "100"},
+  {chipColor: ChipColors.DarkGreen, finalGrade: "100.00%", score: "100", maxScore: "100"},
+  {chipColor: ChipColors.Yellow, finalGrade: "70.00%", score: "49", maxScore: "100"},
+  {chipColor: ChipColors.LightGreen, finalGrade: "80.00%", score: "64", maxScore: "100"},
+]
 
 export default function Home() {
   const [formData, setFormData] = useState<AppState['formData']>({
@@ -27,16 +42,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.hero}>
-          <div className={styles.title}>Curver</div>
-          <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
-          <div className={styles.cardContainer}>
-            <FirstCard />
-            <SecondCard onChange={handleChange} />
-            <ThirdCard formData={formData} />
+      <main>
+        <div>
+          <div className={styles.hero}>
+            <div className={styles.title}>Curver</div>
+            <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
+            <div className={styles.cardContainer}>
+              <FirstCard />
+              <SecondCard onChange={handleChange} />
+              <ThirdCard formData={formData} />
+            </div>
           </div>
+          <DetailSection items={placeholderData}/>
         </div>
+
       </main>
     </>
   );

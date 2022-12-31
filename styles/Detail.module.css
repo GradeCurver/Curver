@@ -1,0 +1,25 @@
+.detailHeader {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailHeader h2 {
+  font-weight: 300;
+}
+
+.detailHeader select {
+  padding: 8px;
+  color: var(--text-secondary-color);
+  font-weight: 400;
+  background-color: var(--card-background-color);
+  border: 1px solid (var(--card-background-color));
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.detailRow {
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 0;
+}

@@ -1,4 +1,5 @@
 import styles from "styles/Home.module.css";
+import { ChipColors, ChipData, GradeChip } from "../Misc/chips";
 
 export const FirstCard = () => {
     return (
@@ -21,18 +22,13 @@ export const FirstCard = () => {
     )
 };
 
-interface ChipData {
-    text: string;
-    hex: string;
-}
-
 const ChipItems: Array<ChipData> = [
-    { text: '90-100%', hex: '#16B364' },
-    { text: '80-90%', hex: '#66C61C' },
-    { text: '70-80%', hex: '#EAAA08' },
-    { text: '60-70%', hex: '#EF6820' },
-    { text: '50-60%', hex: '#F04438' },
-    { text: '<60%', hex: '#F04438' }
+    { text: '90-100%', hex: ChipColors.DarkGreen },
+    { text: '80-90%', hex: ChipColors.LightGreen },
+    { text: '70-80%', hex: ChipColors.Yellow },
+    { text: '60-70%', hex: ChipColors.Orange },
+    { text: '50-60%', hex: ChipColors.Red },
+    { text: '<60%', hex: ChipColors.Red }
 ]
 
 interface GradeRowProps {
@@ -47,11 +43,5 @@ const GradeRow = ({ startNumber, endNumber, chip }: GradeRowProps) => {
             <div style={{ fontSize: 24, }}>{startNumber}-{endNumber}%</div>
             <GradeChip text={chip.text} hex={chip.hex} />
         </div>
-    )
-}
-
-const GradeChip = (props: ChipData) => {
-    return (
-        <div className={styles.gradeChip} style={{ color: props.hex, backgroundColor: `${props.hex}20` }}>{props.text}</div>
     )
 }
