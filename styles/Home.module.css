@@ -22,19 +22,21 @@
 }
 
 .cardContainer {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 3rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  max-width: 80%;
+  margin: 3rem auto;
 }
 
 .card {
-  margin: rem;
-  margin-inline: 3rem;
+  /* margin: rem; */
+  /* margin-inline: 3rem; */
   font-family: Poppins;
   font-weight: regular;
-  width: var(--max-width);
+  /* width: var(--max-width); */
   background-color: var(--card-background-color);
   border: 2px solid var(--card-stroke-color);
   border-radius: 12px;
