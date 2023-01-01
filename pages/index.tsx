@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import { FirstCard } from "../src/Cards/firstCard"
 import { SecondCard, FormData } from "../src/Cards/secondCard"
 import { ThirdCard } from "../src/Cards/thirdCard"
-import { DetailRowProp, DetailSection } from "../src/Detail/detailSection"
+import { DetailItems, DetailRowProp, DetailSection } from "../src/Detail/detailSection"
 import { ChipColors } from "../src/Misc/chips";
 import { useState } from "react";
 import { clear } from "console";
@@ -18,13 +18,13 @@ export default function Home() {
     maxScore: 100,
   });
 
-  const [savedGrades, setSavedGrades] = useState<DetailRowProp[]>([])
+  const [savedGrades, setSavedGrades] = useState<DetailItems[]>([])
 
   const handleChange = (data: AppState['formData']) => {
     setFormData(data);
   };
 
-  const handleAddNewGrade = (data: DetailRowProp) => {
+  const handleAddNewGrade = (data: DetailItems) => {
     let item = savedGrades
     item.unshift(data)
     setSavedGrades(item)

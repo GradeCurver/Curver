@@ -10,14 +10,6 @@
   font-weight: 300;
 }
 
-.materialSymbolsOutlined {
-  /* font-variation-settings:
-  'FILL' 0,
-  'weight' 400,
-  'opsz' 48 */
-}
-
-
 .detailRow {
     display: flex;
     align-items: center;

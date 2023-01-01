@@ -1,4 +1,4 @@
-import { DetailRowProp } from "../Detail/detailSection";
+import { DetailItems, DetailRowProp } from "../Detail/detailSection";
 import { ChipColors } from "../Misc/chips";
 import { curveGrade } from "./thirdCard";
 import styles from "/styles/Home.module.css";
@@ -11,7 +11,7 @@ export interface FormData {
 
 interface FormProps {
   onChange: (data: FormData) => void;
-  setSavedGrades: (data: DetailRowProp) => void;
+  setSavedGrades: (data: DetailItems) => void;
 }
 
 // The Form component is a functional component that takes in props of type FormProps

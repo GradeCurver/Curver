@@ -10,8 +10,15 @@ export interface DetailRowProp {
     delete: (item: number) => void;
 }
 
+export interface DetailItems {
+    chipColor: string;
+    finalGrade: string;
+    score: string;
+    maxScore: string;
+}
+
 interface DetailProps {
-    items: DetailRowProp[];
+    items: DetailItems[];
     clearSavedGrades: () => void;
     deleteGrade: (item: number) => void;
 }
