@@ -28,7 +28,7 @@ const ChipItems: Array<ChipData> = [
     { text: '70-80%', hex: ChipColors.Yellow },
     { text: '60-70%', hex: ChipColors.Orange },
     { text: '50-60%', hex: ChipColors.Red },
-    { text: '<60%', hex: ChipColors.Red }
+    { text: '<50%', hex: ChipColors.Red }
 ]
 
 interface GradeRowProps {

@@ -28,7 +28,7 @@ export const ThirdCard: React.FC<DisplayProps> = (props) => {
 };
 
 // Math operation to return curved score
-function curveGrade({ score, maxScore }: { score: number; maxScore: number; }): string {
+export function curveGrade({ score, maxScore }: { score: number; maxScore: number; }): string {
     var curved: number
 
     curved = (Math.sqrt(score / maxScore) * 100)

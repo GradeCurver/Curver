@@ -6,23 +6,11 @@ import { ThirdCard } from "../src/Cards/thirdCard"
 import { DetailRowProp, DetailSection } from "../src/Detail/detailSection"
 import { ChipColors } from "../src/Misc/chips";
 import { useState } from "react";
+import { clear } from "console";
 
 export interface AppState {
   formData: FormData
 }
-
-const placeholderData: DetailRowProp[] = [
-  {chipColor: ChipColors.DarkGreen, finalGrade: "92.20%", score: "85", maxScore: "100"},
-  {chipColor: ChipColors.Red, finalGrade: "34.64%", score: "12", maxScore: "100"},
-  {chipColor: ChipColors.DarkGreen, finalGrade: "100.00%", score: "100", maxScore: "100"},
-  {chipColor: ChipColors.Yellow, finalGrade: "70.00%", score: "49", maxScore: "100"},
-  {chipColor: ChipColors.LightGreen, finalGrade: "80.00%", score: "64", maxScore: "100"},
-  {chipColor: ChipColors.DarkGreen, finalGrade: "92.20%", score: "85", maxScore: "100"},
-  {chipColor: ChipColors.Red, finalGrade: "34.64%", score: "12", maxScore: "100"},
-  {chipColor: ChipColors.DarkGreen, finalGrade: "100.00%", score: "100", maxScore: "100"},
-  {chipColor: ChipColors.Yellow, finalGrade: "70.00%", score: "49", maxScore: "100"},
-  {chipColor: ChipColors.LightGreen, finalGrade: "80.00%", score: "64", maxScore: "100"},
-]
 
 export default function Home() {
   const [formData, setFormData] = useState<AppState['formData']>({
@@ -30,9 +18,31 @@ export default function Home() {
     maxScore: 100,
   });
 
+  const [savedGrades, setSavedGrades] = useState<DetailRowProp[]>([])
+
   const handleChange = (data: AppState['formData']) => {
     setFormData(data);
   };
+
+  const handleAddNewGrade = (data: DetailRowProp) => {
+    let item = savedGrades
+    item.unshift(data)
+    setSavedGrades(item)
+  };
+
+  const clearSavedGrades = () => {
+    if (window.confirm("Are you sure you want to clear the details?")) {
+      // If the user clicks "OK", set the details array to an empty array
+      setSavedGrades([])
+    }
+  }
+
+  function removeGrade(item: number) {
+    console.log(`${item} Pressed`)
+    let arr = [...savedGrades]
+    arr.splice(item, 1)
+    setSavedGrades(arr)
+  }
 
   return (
     <>
@@ -45,15 +55,22 @@ export default function Home() {
       <main>
         <div>
           <div className={styles.hero}>
-            <div className={styles.title}>Curver</div>
-            <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
-            <div className={styles.cardContainer}>
-              <FirstCard />
-              <SecondCard onChange={handleChange} />
-              <ThirdCard formData={formData} />
+            <div>
+              <div className={styles.title}>Curver</div>
+              <div className={styles.subtitle}>By Ben Ostrovsky & Léo Mindlin </div>
             </div>
+            <div style={{ display: "flex", width: "98vw" }}>
+              <div className={styles.cardContainer}>
+                <FirstCard />
+                <SecondCard onChange={handleChange} setSavedGrades={handleAddNewGrade} />
+                <ThirdCard formData={formData} />
+              </div>
+            </div>
+            <div></div>
+            <div></div>
           </div>
-          <DetailSection items={placeholderData}/>
+
+          <DetailSection items={savedGrades} clearSavedGrades={clearSavedGrades} deleteGrade={removeGrade}/>
         </div>
 
       </main>

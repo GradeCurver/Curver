@@ -1,3 +1,6 @@
+import { DetailRowProp } from "../Detail/detailSection";
+import { ChipColors } from "../Misc/chips";
+import { curveGrade } from "./thirdCard";
 import styles from "/styles/Home.module.css";
 import React, { useState } from 'react';
 
@@ -8,6 +11,7 @@ export interface FormData {
 
 interface FormProps {
   onChange: (data: FormData) => void;
+  setSavedGrades: (data: DetailRowProp) => void;
 }
 
 // The Form component is a functional component that takes in props of type FormProps
@@ -76,6 +80,24 @@ export const SecondCard: React.FC<FormProps> = (props) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
     // If the key that was pressed was the Enter key, reset the form data to its default values
     if (event.key === "Enter") {
+      const numberScore = parseInt(formData.score, 10)
+      if (String(numberScore) != "NaN") {
+        
+      const final = curveGrade({score: numberScore, maxScore: formData.maxScore})
+      const finalNumber = parseInt(final, 10)
+      let color = ChipColors.Red
+      if (finalNumber > 90) {
+        color = ChipColors.DarkGreen
+      } else if (finalNumber > 80){
+        color = ChipColors.LightGreen
+      } else if (finalNumber > 70){
+        color = ChipColors.Yellow
+      } else if (finalNumber > 60){
+        color = ChipColors.Orange
+      }
+
+      props.setSavedGrades({chipColor: color, finalGrade: `${final}%`, score: actualScore, maxScore: String(formData.maxScore)})
+    }
       setFormData({
         score: "",
         maxScore: formData.maxScore,
