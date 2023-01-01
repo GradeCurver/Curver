@@ -110,11 +110,13 @@ export const SecondCard: React.FC<FormProps> = (props) => {
       setActualScore("")
     }
   };
-
     return (
       <div className={styles.card}>
       <div className={styles.cardHeader}>
         <h1>Raw Grade</h1>
+        <button className="tooltip" data-tooltip="This is the tooltip text">
+      (Hover)
+    </button>
       </div>
       <hr />
       <form onKeyDown={handleKeyDown}>
@@ -125,3 +127,4 @@ export const SecondCard: React.FC<FormProps> = (props) => {
     </div>
   )
 };
+

@@ -144,3 +144,42 @@
   font-weight: 600;
   justify-content: center;
 }
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  margin-left: -60px;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+  border-radius: 3px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s;
+}
+
+.tooltip:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
