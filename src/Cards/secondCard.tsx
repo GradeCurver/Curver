@@ -2,6 +2,9 @@ import { DetailItems, DetailRowProp } from "../Detail/detailSection";
 import { ChipColors } from "../Misc/chips";
 import { curveGrade } from "./thirdCard";
 import styles from "/styles/Home.module.css";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import React, { useState } from 'react';
 
 export interface FormData {
@@ -48,7 +51,7 @@ export const SecondCard: React.FC<FormProps> = (props) => {
         setActualScore("")
       } else {
         setActualScore(updatedFormData.score)
-      } 
+      }
     }
 
     /**
@@ -82,22 +85,22 @@ export const SecondCard: React.FC<FormProps> = (props) => {
     if (event.key === "Enter") {
       const numberScore = parseInt(formData.score, 10)
       if (String(numberScore) != "NaN") {
-        
-      const final = curveGrade({score: numberScore, maxScore: formData.maxScore})
-      const finalNumber = parseInt(final, 10)
-      let color = ChipColors.Red
-      if (finalNumber > 90) {
-        color = ChipColors.DarkGreen
-      } else if (finalNumber > 80){
-        color = ChipColors.LightGreen
-      } else if (finalNumber > 70){
-        color = ChipColors.Yellow
-      } else if (finalNumber > 60){
-        color = ChipColors.Orange
-      }
 
-      props.setSavedGrades({chipColor: color, finalGrade: `${final}%`, score: actualScore, maxScore: String(formData.maxScore)})
-    }
+        const final = curveGrade({ score: numberScore, maxScore: formData.maxScore })
+        const finalNumber = parseInt(final, 10)
+        let color = ChipColors.Red
+        if (finalNumber > 90) {
+          color = ChipColors.DarkGreen
+        } else if (finalNumber > 80) {
+          color = ChipColors.LightGreen
+        } else if (finalNumber > 70) {
+          color = ChipColors.Yellow
+        } else if (finalNumber > 60) {
+          color = ChipColors.Orange
+        }
+
+        props.setSavedGrades({ chipColor: color, finalGrade: `${final}%`, score: actualScore, maxScore: String(formData.maxScore) })
+      }
       setFormData({
         score: "",
         maxScore: formData.maxScore,
@@ -110,13 +113,17 @@ export const SecondCard: React.FC<FormProps> = (props) => {
       setActualScore("")
     }
   };
-    return (
-      <div className={styles.card}>
+  return (
+    <div className={styles.card}>
       <div className={styles.cardHeader}>
+      <div style={{opacity: 0}}>
+          <HelpOutlineIcon />
+        </div>
         <h1>Raw Grade</h1>
-        <button className="tooltip" data-tooltip="This is the tooltip text">
-      (Hover)
-    </button>
+        <div id="raw-grade-tooltip">
+          <HelpOutlineIcon />
+        </div>
+        <Tooltip anchorId="raw-grade-tooltip" content="Press enter to log the grade below." />
       </div>
       <hr />
       <form onKeyDown={handleKeyDown}>
