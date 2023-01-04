@@ -1,9 +1,6 @@
 {
-    "cSpell.words": [
-        "Curver",
-        "Ostrovsky"
-    ],
-    "files.associations": {
-        "*.yaml": "home-assistant"
-    }
+  "cSpell.words": ["Curver", "Ostrovsky"],
+  "files.associations": {
+    "*.yaml": "home-assistant"
+  }
 }

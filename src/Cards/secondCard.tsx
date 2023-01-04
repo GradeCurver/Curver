@@ -2,10 +2,10 @@ import { DetailItems, DetailRowProp } from "../Detail/detailSection";
 import { ChipColors } from "../Misc/chips";
 import { curveGrade } from "./thirdCard";
 import styles from "/styles/Home.module.css";
-import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import React, { useState } from 'react';
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import React, { useState } from "react";
 
 export interface FormData {
   score: string;
@@ -19,11 +19,10 @@ interface FormProps {
 
 // The Form component is a functional component that takes in props of type FormProps
 export const SecondCard: React.FC<FormProps> = (props) => {
+  const defaultScore: string = "";
+  const defaultMaxScore: number = 100;
 
-  const defaultScore: string = ""
-  const defaultMaxScore: number = 100
-
-  const [actualScore, setActualScore] = useState("")
+  const [actualScore, setActualScore] = useState("");
 
   const [formData, setFormData] = useState<FormData>({
     score: defaultScore,
@@ -42,30 +41,42 @@ export const SecondCard: React.FC<FormProps> = (props) => {
       // Common JS operator for "object spreading"
       ...formData,
       // Update the value of the field that was changed
-      [event.target.name]: parseInt(event.target.value, 10)
+      [event.target.name]: parseInt(event.target.value, 10),
     };
 
     // Set the Actual Score
     if (event.target.name === "score") {
-      if (String(updatedFormData.score) === "NaN" || updatedFormData.score === "Na") {
-        setActualScore("")
+      if (
+        String(updatedFormData.score) === "NaN" ||
+        updatedFormData.score === "Na"
+      ) {
+        setActualScore("");
       } else {
-        setActualScore(updatedFormData.score)
+        setActualScore(updatedFormData.score);
       }
     }
 
     /**
      * Check if the score is greater than the input
      * If it is, set the score equal to the input to prevent input scores greater than 100%
-     * Also check if the maxScore has now become greater than the actualScore 
+     * Also check if the maxScore has now become greater than the actualScore
      * and if so reinstate the actualScore
      */
-    const numberScore = parseInt(updatedFormData.score, 10)
-    if (event.target.name === "score" && numberScore > updatedFormData.maxScore) {
+    const numberScore = parseInt(updatedFormData.score, 10);
+    if (
+      event.target.name === "score" &&
+      numberScore > updatedFormData.maxScore
+    ) {
       updatedFormData.score = String(updatedFormData.maxScore);
-    } else if (event.target.name === "maxScore" && parseInt(actualScore, 10) < updatedFormData.maxScore) {
-      updatedFormData.score = String(parseInt(actualScore, 10))
-    } else if (event.target.name === "maxScore" && numberScore > updatedFormData.maxScore) {
+    } else if (
+      event.target.name === "maxScore" &&
+      parseInt(actualScore, 10) < updatedFormData.maxScore
+    ) {
+      updatedFormData.score = String(parseInt(actualScore, 10));
+    } else if (
+      event.target.name === "maxScore" &&
+      numberScore > updatedFormData.maxScore
+    ) {
       updatedFormData.score = String(updatedFormData.maxScore);
     }
     setFormData(updatedFormData);
@@ -83,23 +94,30 @@ export const SecondCard: React.FC<FormProps> = (props) => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
     // If the key that was pressed was the Enter key, reset the form data to its default values
     if (event.key === "Enter") {
-      const numberScore = parseInt(formData.score, 10)
+      const numberScore = parseInt(formData.score, 10);
       if (String(numberScore) != "NaN") {
-
-        const final = curveGrade({ score: numberScore, maxScore: formData.maxScore })
-        const finalNumber = parseInt(final, 10)
-        let color = ChipColors.Red
+        const final = curveGrade({
+          score: numberScore,
+          maxScore: formData.maxScore,
+        });
+        const finalNumber = parseInt(final, 10);
+        let color = ChipColors.Red;
         if (finalNumber > 90) {
-          color = ChipColors.DarkGreen
+          color = ChipColors.DarkGreen;
         } else if (finalNumber > 80) {
-          color = ChipColors.LightGreen
+          color = ChipColors.LightGreen;
         } else if (finalNumber > 70) {
-          color = ChipColors.Yellow
+          color = ChipColors.Yellow;
         } else if (finalNumber > 60) {
-          color = ChipColors.Orange
+          color = ChipColors.Orange;
         }
 
-        props.setSavedGrades({ chipColor: color, finalGrade: `${final}%`, score: actualScore, maxScore: String(formData.maxScore) })
+        props.setSavedGrades({
+          chipColor: color,
+          finalGrade: `${final}%`,
+          score: actualScore,
+          maxScore: String(formData.maxScore),
+        });
       }
       setFormData({
         score: "",
@@ -110,28 +128,44 @@ export const SecondCard: React.FC<FormProps> = (props) => {
         score: "",
         maxScore: formData.maxScore,
       });
-      setActualScore("")
+      setActualScore("");
     }
   };
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-      <div style={{opacity: 0}}>
+        <div style={{ opacity: 0 }}>
           <HelpOutlineIcon />
         </div>
         <h1>Raw Grade</h1>
         <div id="raw-grade-tooltip">
           <HelpOutlineIcon />
         </div>
-        <Tooltip anchorId="raw-grade-tooltip" content="Press enter to log the grade below." />
+        <Tooltip
+          anchorId="raw-grade-tooltip"
+          content="Press enter to log the grade below."
+        />
       </div>
       <hr />
       <form onKeyDown={handleKeyDown}>
-        <input name="score" value={actualScore} max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
+        <input
+          name="score"
+          value={actualScore}
+          max={9999}
+          maxLength={4}
+          onChange={handleChange}
+          onInput={handleInput}
+        />
         <hr />
-        <input name="maxScore" defaultValue={defaultMaxScore} max={9999} maxLength={4} onChange={handleChange} onInput={handleInput} />
+        <input
+          name="maxScore"
+          defaultValue={defaultMaxScore}
+          max={9999}
+          maxLength={4}
+          onChange={handleChange}
+          onInput={handleInput}
+        />
       </form>
     </div>
-  )
+  );
 };
-

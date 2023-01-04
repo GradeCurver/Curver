@@ -2,13 +2,13 @@
 :root {
   --max-width: 1100rem;
 
-  --hero-background-color: #F8FAFC;
+  --hero-background-color: #f8fafc;
   --background-color: white;
   --text-color: #000000;
   --text-secondary-color: #445469;
 
-  --card-background-color: #FFFFFF;
-  --card-stroke-color: #EAECF0;
+  --card-background-color: #ffffff;
+  --card-stroke-color: #eaecf0;
   --card-text-color: #000000;
   --card-shadow-color: rgba(0, 0, 0, 0.05);
   margin: 0;
@@ -18,15 +18,16 @@
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'weight' 400,
-  'opsz' 48
+  font-variation-settings: "FILL" 0, "weight" 400, "opsz" 48;
 }
 
 /* Remove Outline When Selecting */
-:focus {outline:none;}
-::-moz-focus-inner {border:0;}
+:focus {
+  outline: none;
+}
+::-moz-focus-inner {
+  border: 0;
+}
 
 /* Remove Stepper From Number Input */
 input::-webkit-outer-spin-button,
@@ -34,22 +35,22 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
   appearance: nil;
 }
 
 /* Dark Mode Colors */
 @media (prefers-color-scheme: dark) {
-  :root{
+  :root {
     --hero-background-color: #000000;
-    --background-color: #1A1A1A;
+    --background-color: #1a1a1a;
     --text-color: #ffffff;
-    --text-secondary-color: #A5A5A6;
+    --text-secondary-color: #a5a5a6;
 
-    --card-background-color: #1A1A1A;
-    --card-stroke-color: #3C3C3E;
-    --card-text-color: #F8FAFC;
+    --card-background-color: #1a1a1a;
+    --card-stroke-color: #3c3c3e;
+    --card-text-color: #f8fafc;
     --card-shadow-color: rgba(0, 0, 0, 0);
 
     background-color: var(--background-color);

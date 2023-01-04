@@ -38,11 +38,9 @@
   transition: opacity 0.2s;
 }
 
-
-
 .tableRow:hover button{
   opacity: 1;
-  color: var(--text-secondary-color);
+
 }
 
 .tableRow button {
@@ -50,5 +48,5 @@
   background: none;
   border: none;
   opacity: 0;
-  color: var(--text-secondary-color);
+  color: var(--text-primary-color);
 }
